@@ -29,11 +29,13 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
 
         User::create([
+            'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -57,10 +59,12 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
         ]);
 
         $user->update([
+            'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
